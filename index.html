@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página Web</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="Logo de la empresa">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pages/nosotros.html">Nosotros</a></li>
+                <li><a href="pages/contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio">
+    <h1>¡Impulsa tu negocio con una página web profesional!</h1>
+    <p>Diseño y desarrollo de sitios web modernos, rápidos y adaptados a tus necesidades. ¡Haz crecer tu presencia online hoy mismo!</p>
+    <a href="pages/contacto.html" class="boton-contacto">Solicita tu cotización</a>
+    
+    <h3 style="margin-top:20px; color:#6614ff; font-size:1.2em; text-align:left;">Imágenes de ejemplo:</h3>
+    <div class="imagenes-principales" id="galeria">
+        <img src="https://picsum.photos/300/200?random=1" alt="Ejemplo de página web">
+        <img src="https://picsum.photos/300/200?random=2" alt="Diseño responsivo">
+        <img src="https://picsum.photos/300/200?random=3" alt="Desarrollo web moderno">
+        <img src="https://picsum.photos/300/200?random=4" alt="Ejemplo adicional 1">
+        <img src="https://picsum.photos/300/200?random=5" alt="Ejemplo adicional 2">
+        <img src="https://picsum.photos/300/200?random=6" alt="Ejemplo adicional 3">
+    </div>
+</section>
+
+    <section id="servicios-destacados">
+        <h2>¿Qué te ofrezco?</h2>
+        <div class="servicios-lista">
+            <div class="servicio">
+                <h3>Diseño Responsivo</h3>
+                <p>Tu web se verá perfecta en cualquier dispositivo.</p>
+            </div>
+            <div class="servicio">
+                <h3>Optimización SEO</h3>
+                <p>Mejor posicionamiento en Google y otros buscadores.</p>
+            </div>
+            <div class="servicio">
+                <h3>Soporte Personalizado</h3>
+                <p>Acompañamiento y asesoría en todo momento.</p>
+            </div>
+            <div class="servicio">
+                <h3>Hosting y Dominio</h3>
+                <p>Te ayudo a elegir el mejor hosting y dominio para tu web.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 MasterDigitalMx - Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+const galeria=document.getElementById('galeria');
+const imgWidth=galeria.querySelector('img').offsetWidth + 22; // 22px es el gap
+let direccion=1; //1=derecha, -1=izquierda
+
+setInterval(() => {
+    // Si va a la derecha y llega al final, cambia dirección
+    if (direccion===1 && galeria.scrollLeft + galeria.offsetWidth >= galeria.scrollWidth - 10) {
+        direccion=-1;
+    }
+    // Si va a la izquierda y llega al inicio, cambia dirección
+    if (direccion===-1 && galeria.scrollLeft<=0) {
+        direccion=1;
+    }
+    galeria.scrollBy({left: imgWidth*direccion, behavior: 'smooth'});
+}, 1000);
+</script>
+<script>
+window.onload = function() {
+  const form = document.querySelector('.form-contacto');
+  if(form) form.reset();
+};
+</script>
+</body>
+</html>
