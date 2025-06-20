@@ -440,4 +440,19 @@ footer {
         padding: 24px 4vw 18px 4vw;
     }
 }
+/* Servicios destacados */
+#servicios-destacados h1 {
+  color: #3730a3;
+  font-size: 2.3em;
+  margin-bottom: 18px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
 
+#servicios-destacados h2 {
+ color: #3730a3;
+  font-size: 2.3em;
+  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
