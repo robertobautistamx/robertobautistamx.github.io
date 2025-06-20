@@ -301,34 +301,137 @@ footer {
 }
 
 @media (max-width: 600px) {
-    #inicio h1 {
-        font-size: 1.3em;
-        padding: 0 8px;
-    }
-    #inicio p {
-        font-size: 1em;
-        padding: 0 8px;
-    }
-    .boton-contacto {
-        font-size: 1em;
-        padding: 10px 18px;
-        width: 90%;
-        max-width: 300px;
-    }
-    .imagenes-principales {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-    }
-    .imagenes-principales img {
-        width: 95vw;
-        max-width: 350px;
-    }
-    .servicios-lista {
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-    }
+  body {
+    padding: 0;
+    background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  }
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 18px 6vw 10px 6vw;
+    gap: 10px;
+    background: linear-gradient(90deg, #6614ff 60%, #007bff 100%);
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 4px 16px rgba(102,20,255,0.10);
+  }
+  .logo img {
+    width: 64px;
+    margin: 0 auto 8px auto;
+    display: block;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    align-items: stretch;
+  }
+  nav ul li a {
+    padding: 12px 0;
+    font-size: 1.1em;
+    width: 100%;
+    display: block;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    margin-bottom: 2px;
+    text-align: center;
+    transition: background 0.2s, color 0.2s;
+  }
+  nav ul li a:hover,
+  nav ul li a:focus {
+    background: #ffd700;
+    color: #3730a3;
+  }
+  section, .nosotros, .form-contacto {
+    padding: 18px 4vw;
+    max-width: 98vw;
+    margin: 14px 0;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(102,20,255,0.10);
+    background: #fff;
+  }
+  h1, h2 {
+    font-size: 1.4em;
+    margin-bottom: 12px;
+    text-align: center;
+    color: #6614ff;
+  }
+  .nosotros-icono {
+    font-size: 2.2em;
+    margin-bottom: 6px;
+  }
+  .imagenes-principales {
+    gap: 8px;
+    padding-bottom: 8px;
+    border-radius: 10px;
+  }
+  .imagenes-principales img {
+    width: 96vw;
+    max-width: 98vw;
+    padding: 2px;
+    border-radius: 12px;
+  }
+  .servicios-lista {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .servicio {
+    width: 100%;
+    min-width: unset;
+    padding: 18px 10px;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(102,20,255,0.10);
+    margin-bottom: 6px;
+  }
+  .form-contacto input,
+  .form-contacto textarea {
+    max-width: 100%;
+    font-size: 1.08em;
+    border-radius: 10px;
+    border: 1.5px solid #e0e7ef;
+    margin-bottom: 6px;
+    background: #f8fafc;
+    box-shadow: 0 1px 4px rgba(102,20,255,0.04);
+  }
+  .form-contacto textarea {
+    min-height: 60px;
+  }
+  .boton-contacto {
+    width: 100%;
+    padding: 14px 0;
+    font-size: 1.08em;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #6614ff 0%, #007bff 100%);
+    margin-top: 10px;
+    margin-bottom: 6px;
+    box-shadow: 0 2px 8px rgba(102,20,255,0.10);
+  }
+  .redes-sociales {
+    gap: 14px;
+    margin-top: 10px;
+  }
+  .redes-sociales svg {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #f8fafc;
+    box-shadow: 0 2px 8px rgba(102,20,255,0.08);
+    padding: 4px;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .redes-sociales a:hover svg {
+    background: #ffd700;
+    transform: scale(1.12) rotate(-6deg);
+  }
+  footer {
+    font-size: 1em;
+    padding: 14px 4vw;
+    margin-top: 10px;
+    border-radius: 14px 14px 0 0;
+    background: linear-gradient(90deg, #6614ff 60%, #007bff 100%);
+    color: #fff;
+    text-align: center;
+    box-shadow: 0 -2px 8px rgba(102,20,255,0.07);
+  }
 }
 @media (max-width: 900px) {
     section {
