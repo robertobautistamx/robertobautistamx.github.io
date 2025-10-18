@@ -1230,6 +1230,11 @@
         /* Pequeños refinamientos visuales */
         .filter-button.active { box-shadow: 0 6px 18px rgba(11,118,255,0.08); }
     </style>
+    <style>
+        /* Fix: quitar padding-top que deja la franja blanca en móvil y asegurar navbar encima */
+        .navbar.fixed-top { top: 0; z-index: 1050; }
+        body { padding-top: 0 !important; }
+    </style>
 </body>
 
 </html>
