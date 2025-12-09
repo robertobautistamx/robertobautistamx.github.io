@@ -180,5 +180,3 @@ El sitio se adapta automáticamente a todos los tamaños de pantalla:
 ## 📄 Licencia
 
 Este código es **privado**. No se permite su uso, copia, modificación ni distribución sin autorización expresa.
-
-© 2025 Multiservicios Integrales. Todos los derechos reservados.
