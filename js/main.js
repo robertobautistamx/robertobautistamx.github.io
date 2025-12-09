@@ -4,11 +4,12 @@
     // Navbar on scrolling
     $(window).scroll(function () {
         if ($(this).scrollTop() > 200) {
-            $('.navbar').fadeIn('slow').css('display', 'flex');
+            $('.navbar').fadeIn('slow').css('display', 'flex').addClass('navbar-visible');
         } else {
-            $('.navbar').fadeOut('slow').css('display', 'none');
+            $('.navbar').fadeOut('slow').css('display', 'none').removeClass('navbar-visible');
         }
     });
+    
 
 
     // Smooth scrolling on the navbar links
@@ -26,6 +27,72 @@
             }
         }
     });
+
+    // Mobile/Tablet dropdown toggle for Services menu
+    var dropdownToggle = function(){
+        var $link = $('.dropdown-menu-parent > .nav-link');
+        var $caret = $('.dropdown-caret');
+        var $menu = $('.dropdown-menu-services');
+        var $parent = $('.dropdown-menu-parent');
+        var closeTimeout;
+        
+        // Both link and caret trigger the dropdown on mobile
+        $link.on('click', function(e){
+            // Check if we're on mobile/tablet (nav is collapsible)
+            if($('.navbar-toggler').is(':visible')){
+                e.preventDefault();
+                e.stopPropagation();
+                
+                var isOpen = $(this).attr('aria-expanded') === 'true';
+                $(this).attr('aria-expanded', !isOpen);
+                $menu.stop(true, true).slideToggle(200);
+            }
+        });
+        
+        $caret.on('click', function(e){
+            // Check if we're on mobile/tablet
+            if($('.navbar-toggler').is(':visible')){
+                e.preventDefault();
+                e.stopPropagation();
+                
+                var isOpen = $link.attr('aria-expanded') === 'true';
+                $link.attr('aria-expanded', !isOpen);
+                $menu.stop(true, true).slideToggle(200);
+            }
+        });
+        
+        // Desktop: Keep dropdown open on hover with delay
+        $parent.on('mouseenter', function(){
+            clearTimeout(closeTimeout);
+            if(!$('.navbar-toggler').is(':visible')){
+                $menu.stop(true, true).slideDown(200);
+            }
+        });
+        
+        $parent.on('mouseleave', function(){
+            if(!$('.navbar-toggler').is(':visible')){
+                closeTimeout = setTimeout(function(){
+                    $menu.stop(true, true).slideUp(200);
+                }, 150);
+            }
+        });
+        
+        // Close dropdown when clicking on a dropdown item
+        $menu.on('click', 'a', function(){
+            $link.attr('aria-expanded', 'false');
+            $menu.slideUp(200);
+        });
+        
+        // Close dropdown when clicking outside
+        $(document).on('click', function(e){
+            if(!$(e.target).closest('.dropdown-menu-parent').length){
+                $link.attr('aria-expanded', 'false');
+                $menu.slideUp(200);
+            }
+        });
+    };
+    
+    dropdownToggle();
 
 
     // Scroll to Bottom
@@ -107,8 +174,20 @@
         navText : [
             '<i class="fa fa-angle-left" aria-hidden="true"></i>',
             '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+
         ],
     });
-    
+
+    // Initialize navbar visibility on load (hide over hero, show if scrolled)
+    $(function(){
+        if($(window).scrollTop() > 200){
+            $('.navbar').show().addClass('navbar-visible').css('display','flex');
+        } else {
+            $('.navbar').hide().removeClass('navbar-visible').css('display','none');
+        }
+    });
+
 })(jQuery);
+
+
 
