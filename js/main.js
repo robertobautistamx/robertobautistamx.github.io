@@ -187,6 +187,34 @@
         }
     });
 
+    // Gallery: show 6 items, then load 6 more per click (desktop y móvil)
+    $(function(){
+        const $items = $('.gallery-item');
+        const $btn = $('.btn-load-more');
+        if(!$items.length || !$btn.length) return;
+
+        // Ocultar todos y mostrar los primeros 6
+        $items.addClass('hidden-item');
+        $items.slice(0, 6).removeClass('hidden-item');
+
+        if($('.gallery-item.hidden-item').length === 0){
+            $btn.addClass('hidden');
+            return;
+        }
+
+        $btn.off('click').on('click', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+
+            const $hidden = $('.gallery-item.hidden-item');
+            $hidden.slice(0, 6).removeClass('hidden-item');
+
+            if($('.gallery-item.hidden-item').length === 0){
+                $btn.addClass('hidden');
+            }
+        });
+    });
+
 })(jQuery);
 
 

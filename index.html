@@ -57,26 +57,26 @@
                 </ul>
 
                 <div class="navbar-socials-mobile d-lg-none mb-3">
-                    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="navbar-social-icon">
+                    <a href="https://www.facebook.com/people/Multiservicios-Integrales-Tampico/61578697377209/" target="_blank" rel="noopener" aria-label="Facebook" class="navbar-social-icon">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="navbar-social-icon">
+                    <a href="https://www.instagram.com/serv.integralestampico?igsh=aDlvNWs0MTNndzAz" target="_blank" rel="noopener" aria-label="Instagram" class="navbar-social-icon">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp" class="navbar-social-icon">
+                    <a href="https://wa.me/+528333102201" target="_blank" rel="noopener" aria-label="WhatsApp" class="navbar-social-icon">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
 
                 <div class="d-flex align-items-center">
                     <div class="navbar-socials mr-lg-3">
-                        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="navbar-social-icon">
+                        <a href="https://www.facebook.com/people/Multiservicios-Integrales-Tampico/61578697377209/" target="_blank" rel="noopener" aria-label="Facebook" class="navbar-social-icon">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="navbar-social-icon">
+                        <a href="https://www.instagram.com/serv.integralestampico?igsh=aDlvNWs0MTNndzAz" target="_blank" rel="noopener" aria-label="Instagram" class="navbar-social-icon">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://wa.me/" target="_blank" rel="noopener" aria-label="WhatsApp" class="navbar-social-icon">
+                        <a href="https://wa.me/+528333102201" target="_blank" rel="noopener" aria-label="WhatsApp" class="navbar-social-icon">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -276,8 +276,8 @@
                                     (function(){
                                         function mobileMode(){ return window.matchMedia('(max-width: 576px)').matches; }
 
-                                        var itemsToShowInitial = mobileMode() ? 3 : Number.MAX_SAFE_INTEGER;
-                                        var itemsIncrement = mobileMode() ? 3 : Number.MAX_SAFE_INTEGER;
+                                        var itemsToShowInitial = 6;
+                                        var itemsIncrement = 6;
                                         var itemsToShow = itemsToShowInitial;
 
                                         var $gridEl = $('.gallery-grid');
@@ -294,32 +294,29 @@
                                         var $actionsWrap = $loadBtn.closest('.gallery-actions');
 
                                         function applyLimit(){
-                                            var isMobile = mobileMode();
                                             var filteredElems = $grid.isotope('getFilteredItemElements') || [];
 
-                                            if(!isMobile){
-                                                $(filteredElems).removeClass('hidden');
-                                                $actionsWrap.hide();
-                                                $grid.isotope('layout');
-                                                return;
-                                            }
-
                                             $(filteredElems).each(function(i, el){
-                                                if(i < itemsToShow) $(el).removeClass('hidden');
-                                                else $(el).addClass('hidden');
+                                                if(i < itemsToShow) $(el).removeClass('hidden').removeClass('hidden-item');
+                                                else $(el).addClass('hidden-item');
                                             });
 
                                             $grid.isotope('layout');
 
-                                            if(filteredElems.length > itemsToShow) $actionsWrap.show();
-                                            else $actionsWrap.hide();
+                                            if(filteredElems.length > itemsToShow){
+                                                $actionsWrap.show();
+                                                $loadBtn.removeClass('hidden');
+                                            } else {
+                                                $actionsWrap.show();
+                                                $loadBtn.addClass('hidden');
+                                            }
                                         }
 
                                         // esperar imágenes
                                         imagesLoaded( $('.gallery-grid')[0], function(){
                                             $grid.isotope('layout');
-                                            itemsToShowInitial = mobileMode() ? 3 : Number.MAX_SAFE_INTEGER;
-                                            itemsIncrement = mobileMode() ? 3 : Number.MAX_SAFE_INTEGER;
+                                            itemsToShowInitial = 6;
+                                            itemsIncrement = 6;
                                             itemsToShow = itemsToShowInitial;
                                             applyLimit();
                                         });
@@ -330,8 +327,8 @@
                                             $(this).addClass('active');
                                             var filterValue = $(this).attr('data-filter');
 
-                                            itemsToShowInitial = mobileMode() ? 3 : Number.MAX_SAFE_INTEGER;
-                                            itemsIncrement = mobileMode() ? 3 : Number.MAX_SAFE_INTEGER;
+                                            itemsToShowInitial = 6;
+                                            itemsIncrement = 6;
                                             itemsToShow = itemsToShowInitial;
 
                                             $grid.isotope({ filter: filterValue });
@@ -340,25 +337,16 @@
 
                                         // mostrar más
                                         $loadBtn.off('click.gallery').on('click.gallery', function(){
-                                            if(!mobileMode()) return;
                                             itemsToShow += itemsIncrement;
                                             applyLimit();
-                                            setTimeout(function(){ $('html,body').animate({ scrollTop: $actionsWrap.offset().top - 120 }, 300); }, 80);
+                                            if(mobileMode()){
+                                                setTimeout(function(){ $('html,body').animate({ scrollTop: $actionsWrap.offset().top - 120 }, 300); }, 80);
+                                            }
                                         });
 
                                         // resize
-                                        var lastMobile = mobileMode();
                                         $(window).off('resize.gallery').on('resize.gallery', function(){
-                                            var nowMobile = mobileMode();
-                                            if(nowMobile !== lastMobile){
-                                                itemsToShowInitial = nowMobile ? 3 : Number.MAX_SAFE_INTEGER;
-                                                itemsIncrement = nowMobile ? 3 : Number.MAX_SAFE_INTEGER;
-                                                itemsToShow = itemsToShowInitial;
-                                                setTimeout(function(){ applyLimit(); }, 120);
-                                                lastMobile = nowMobile;
-                                            } else {
-                                                $grid.isotope('layout');
-                                            }
+                                            $grid.isotope('layout');
                                         });
 
                                     })();
